@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: php8.2-app
+    container_name: php82
+    ports:
+      - "8082:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./laravel.conf:/etc/apache2/sites-available/laravel.conf
