@@ -22,6 +22,7 @@ services:
       TZ: ${TZ}
     volumes:
       - n8n_data:/home/node/.n8n
+      - ./data:/home/data
     restart: unless-stopped
 volumes:
   n8n_data:
