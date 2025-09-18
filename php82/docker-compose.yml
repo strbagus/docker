@@ -10,4 +10,11 @@ services:
       - "8082:80"
     volumes:
       - ./www:/var/www/html
+      - /home/strbagus/www/aaa-laravel:/var/www/html/aaa-laravel
       - ./laravel.conf:/etc/apache2/sites-available/laravel.conf
+    networks:
+      - laravel
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+networks:
+  laravel:
