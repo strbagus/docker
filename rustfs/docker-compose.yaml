@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  rustfs:
+    image: rustfs/rustfs:latest
+    container_name: rustfs
+    ports:
+      - "9000:9000"  # S3 API
+      - "9001:9001"  # Web UI
+    environment:
+      RUSTFS_ACCESS_KEY or RUSTFS_SECRET_KEY
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_BROWSER_REDIRECT_URL: ${MINIO_BROWSER_URL}
+    command: server /data --console-address ":9001"
+    volumes:
+      - ${MINIO_DATA_DIR}:/data
+    restart: unless-stopped
